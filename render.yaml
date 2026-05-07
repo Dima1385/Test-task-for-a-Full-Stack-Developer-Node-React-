@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: job-processor-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_PATH
+        value: /data/jobs.db
+    disk:
+      name: sqlite-data
+      mountPath: /data
+      sizeGB: 1
