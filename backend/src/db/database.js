@@ -18,10 +18,11 @@ function getDb() {
       CREATE TABLE IF NOT EXISTS jobs (
         id         TEXT PRIMARY KEY,
         status     TEXT NOT NULL DEFAULT 'queued',
-        progress   INTEGER NOT NULL DEFAULT 0,
+        progress   REAL NOT NULL DEFAULT 0,
         option     TEXT,
-        value      INTEGER,
+        value      REAL,
         result     TEXT,
+        error      TEXT,
         createdAt  TEXT NOT NULL
       )
     `);

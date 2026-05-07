@@ -20,12 +20,21 @@ function createWebSocketServer(server) {
     if (!subscriptions.has(jobId)) subscriptions.set(jobId, new Set());
     subscriptions.get(jobId).add(ws);
 
-    // Send current job state immediately so the client never misses queued/processing
-    // (pipeline may have started before WS connection was established)
+    // On connect: send full normalized job snapshot from DB.
+    // Guarantees client gets accurate state regardless of when it connected
+    // (queued, already processing, or even done).
     const { getJobById } = require('./db/database');
     const job = getJobById(jobId);
     if (job) {
-      const payload = { event: job.status, jobId, progress: job.progress };
+      const payload = {
+        event:     job.status,          // queued | processing | done | failed
+        jobId:     job.id,
+        status:    job.status,
+        progress:  job.progress,
+        createdAt: job.createdAt,
+        error:     job.error ?? null,
+        result:    null,
+      };
       if (job.status === 'done' && job.result) {
         try { payload.result = JSON.parse(job.result); } catch { /* ignore */ }
       }
