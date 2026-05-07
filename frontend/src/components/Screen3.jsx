@@ -173,6 +173,16 @@ export default function Screen3({ option, value, onReset, onProcessingChange }) 
           </button>
         </>
       )}
+
+      {isProcessing && (
+        <button
+          className="btn-reset"
+          style={{ marginTop: 16 }}
+          onClick={handleReset}
+        >
+          Cancel
+        </button>
+      )}
     </div>
   );
 }

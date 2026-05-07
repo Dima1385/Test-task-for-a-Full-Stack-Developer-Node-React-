@@ -43,7 +43,9 @@ export function useWebSocketJob() {
       let msg;
       try { msg = JSON.parse(event.data); } catch { return; }
 
-      if (msg.event === 'processing') {
+      if (msg.event === 'queued') {
+        setState((s) => ({ ...s, status: 'queued', progress: 0 }));
+      } else if (msg.event === 'processing') {
         setState((s) => ({ ...s, status: 'processing' }));
       } else if (msg.event === 'progress') {
         setState((s) => ({ ...s, status: 'processing', progress: msg.progress }));

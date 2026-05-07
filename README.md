@@ -2,6 +2,7 @@
 
 Node.js + React app that demonstrates real-time job processing via WebSocket and HTTP polling.
 
+**GitHub:** https://github.com/Dima1385/Test-task-for-a-Full-Stack-Developer-Node-React-  
 **Live demo:** https://job-processor-21287.web.app  
 **Backend API:** https://test-task-for-a-full-stack-developer.onrender.com
 
