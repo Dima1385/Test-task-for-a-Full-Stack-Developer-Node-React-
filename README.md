@@ -2,6 +2,9 @@
 
 Node.js + React app that demonstrates real-time job processing via WebSocket and HTTP polling.
 
+**Live demo:** https://job-processor-21287.web.app  
+**Backend API:** https://test-task-for-a-full-stack-developer.onrender.com
+
 ## Running locally
 
 **Backend** (port 4000)
