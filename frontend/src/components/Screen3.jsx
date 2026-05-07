@@ -73,13 +73,10 @@ export default function Screen3({ option, value, onReset, onProcessingChange }) 
 
           <div className="option-list">
             {LAUNCH_OPTIONS.map((opt) => (
-              <div
+              <button
                 key={opt.id}
                 className="option-card"
                 onClick={() => handleLaunch(opt.id)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && handleLaunch(opt.id)}
               >
                 <span className="option-card__emoji">{opt.emoji}</span>
                 <div>
@@ -88,7 +85,7 @@ export default function Screen3({ option, value, onReset, onProcessingChange }) 
                     {opt.desc}
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
