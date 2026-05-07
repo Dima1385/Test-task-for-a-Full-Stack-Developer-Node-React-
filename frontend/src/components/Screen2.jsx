@@ -35,7 +35,12 @@ export default function Screen2({ option, onContinue }) {
   return (
     <div className="screen">
       <div className="screen__body">
-        <h1 className="screen__title">Enter a numeric value</h1>
+        <h1 className="screen__title">
+          {unit === 'kg'
+            ? <>What is your <em>goal</em> weight?</>
+            : 'What is your weight?'
+          }
+        </h1>
 
         <div className="unit-toggle">
           {UNITS.map((u) => (
